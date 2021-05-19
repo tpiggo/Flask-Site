@@ -1,0 +1,70 @@
+{% extends "sbase.html" %}
+{% block title %} People {% endblock %}
+{% block main_section %}
+    <h1>People Search</h1>
+    <div id='people_query_box'>
+        <form id='search_form_people' method='POST'>
+            <label for="input_for_sorting">People Search:</label>
+            <input type="text" id="input_for_sorting" placeholder="Type here" name="content">
+            <select name="type_of">
+                <option value="none">None</option>
+                <option value="id">Id</option>
+                <option value="full_name">Full Name</option>
+                <option value="first_name">First Name</option>
+                <option value="last_name">Last Name</option>
+                <option value="email">Email</option>
+                <option value="country">Country of Birth</option>
+                <option value="date_birth">Date of Birth</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <section id='main_people'>
+        {% if people is not none or person is not none %}
+        <table class='table'>
+            <thead></thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Country of Birth</th>
+                    <th scope="col">Date of Birth</th>
+                </tr>
+            </thead>
+            {% if person is none %}
+                {% for person in people %}
+                <tbody>
+                    <tr>
+                        <td>{{ person.id }}</td>
+                        <td>{{ person.first_name }}</td>
+                        <td>{{ person.last_name }}</td>
+                        <td>{{ person.email }}</td>
+                        <td>{{ person.gender }}</td>
+                        <td>{{ person.country_of_birth }}</td>
+                        <td>{{ person.date_of_birth }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            {% else %}
+            <tbody>
+                <tr>
+                    <td>{{ person.id }}</td>
+                    <td>{{ person.first_name }}</td>
+                    <td>{{ person.last_name }}</td>
+                    <td>{{ person.email }}</td>
+                    <td>{{ person.gender }}</td>
+                    <td>{{ person.country_of_birth }}</td>
+                    <td>{{ person.date_of_birth }}</td>
+                </tr>
+            </tbody>
+            {% endif %}
+        </table>
+        {% else %}
+        <h4>There was no match your query! Please try again!</h4>
+        {% endif %}
+    </section>
+    
+    
+{% endblock %}

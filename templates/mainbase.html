@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+</head>
+<body>
+    <nav class="nav-bar">
+        <a class="navbar-brand" href="/">Tim's Website</a>
+        <div class="main-nav-bar">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/shop-project">Shop Project</a>
+                </li>
+              </ul>
+        </div>
+        <form class='main-seach-bar' method='GET'>
+            <input class="input-search-bar" type="search" placeholder="Search" name='navsearch' aria-label="Search">
+            <button class="button-search" type="submit">Search</button>
+        </form>
+    </nav>
+    <section id="main-section">
+        {% block main_section %}
+        {% endblock %}
+    </section>
+    <aside id='main-aside'>
+        <!-- TODO -->
+    </aside> 
+    <footer id="main-footer">
+        {% block footer %}{% endblock %}
+        <!-- Putting the copy right at the absolute bottom-->
+        &copy; Copyright 2020 by <a href="#">Me</a>.
+    </footer>   
+    
+</body>
+</html>

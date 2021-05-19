@@ -1,0 +1,30 @@
+{% extends "sbase.html" %}
+{% block main_section %}
+    <h1>Purchases Search</h1>
+    <div id="purchases_query_box">
+        <form id='search_form_purchases' onsubmit="searchPurchases(event, $(this))">
+            <label for="store_type">Select Stores:</label>
+            <select name="store_type" id="store_selector">
+                <option value="all">All</option>
+                <option value="hardwarestore">Hardware</option>
+                <option value="appearlstore">Appearl</option>
+                <option value="grocerystore">Grocery</option>
+            </select>
+            <label for="input_for_sorting">Purchase Search:</label>
+            <input type="text" id="input_for_sorting" placeholder="Type here" name="content">
+            <label for="type_of">Find by:</label>
+            <select name="type_of" id="type_select">
+                <option value="purchase_id">Purchase reference</option>
+                <option value="purchase_amount">Amount</option>
+                <option value="purchase_method">Method of Purchase</option>
+            </select>
+            <input id="search_purchases_input" type="submit" value="Submit">
+        </form>
+    </div>
+    {% block purchase_section %}{% endblock %}
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    <script type= text/javascript src="{{ url_for('.static', filename='js/purchases.js') }}"></script> 
+{% endblock %}

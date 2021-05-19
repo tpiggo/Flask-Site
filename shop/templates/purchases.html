@@ -1,0 +1,9 @@
+{% extends "p_base.html" %}
+{% block title %} Purchases Main {% endblock %}
+{% block purchase_section %}
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/table.css') }}">
+    <div id="root">
+        Welcome to the startup page of the Purchases API. We have built this API around accessability and ease of use for the user. <br>
+        You as the user can easily search through all the databases which your company owns. For ease of use, each database can be accessed individually or you may access them all at once.
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+#response-table {
+    width: 100%;
+}
+th{
+    padding: 1rem;
+}
+
+.response-entry {
+    text-align: center;
+    padding: 1rem;
+}
+
+@media screen and (min-width: 900) {
+    #response-table {
+        width: 95%;
+    }   
+}
