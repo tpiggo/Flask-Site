@@ -13,12 +13,29 @@ function createNewTable(data) {
     <th>Total</th>
     <th>Close Type</th>
     </tr>`;
-    createInnerTable(data, table);
+    if (data.length === 0) 
+        createErrorInnerTable(table);
+    else 
+        createInnerTable(data, table);
     return table;
 }   
 
 /**
- * Tables a clean table and fills it with the new data. 
+ * Creates an inner table which is an error message. Requires a "clean" table
+ * @param {HTMLTableElement} table 
+ */
+function createErrorInnerTable(table) {
+    table.innerHTML += `
+        <tr class="response-row">
+            <td id="error-entry" colspan="5">
+                There was no data found by your query! Try again.
+            </td>
+        </tr>
+    `
+}
+
+/**
+ * Appends data to a table, which should be "clean" before this function 
  * @param {Array} data 
  * @param {HTMLTableElement} table 
  */
@@ -45,10 +62,14 @@ function replaceTable(data, tableElement) {
     while (tableHeader.nextSibling !== null) {
         tableElement.removeChild(tableHeader.nextSibling)
     }
-    createInnerTable(data, tableElement);
+    if (data.length === 0) 
+        createErrorInnerTable(tableElement);
+    else 
+        createInnerTable(data, tableElement);
 }
 
 /**
+ * Asynchronously searching the tables on the server side. Rendering issues with search if they occur.
  * @param {Event} event
  * @param {jQuery} element
  */

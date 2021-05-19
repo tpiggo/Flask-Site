@@ -1,5 +1,6 @@
 from shop.models import Hardwarestore, Grocerystore, Appearlstore
 
+# Utility function for accessing the tables about the store data.
 def get_searched_data(store, search, input_type):
     # get the store type
     t_store = Appearlstore

@@ -1,6 +1,12 @@
 #response-table {
     width: 100%;
 }
+
+#error-entry {
+    background: red;
+    column-span: 5;
+}
+
 th{
     padding: 1rem;
 }

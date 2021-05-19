@@ -33,7 +33,7 @@ def search(data=None):
         data = 'No search was received'
     return render_template('search.html', string=data)
 
-
+#Rotue for the person search. The search is synchronous.
 @shop.route('/people', methods=["GET", "POST"])
 def search_people(person=None, people=None):
     print('Starting search page!')
@@ -67,8 +67,8 @@ def search_people(person=None, people=None):
     people = Person.query.order_by(Person.id).all()
     return render_template('people.html', people=people, person=person)
 
-
-@shop.route('/purchases', methods=['GET', 'POST'])
+# Route for rendering the first page of the store data.
+@shop.route('/purchases', methods=['GET'])
 def purchases_page():
     if request.args.get('navsearch') is not None:
         data = request.args.get('navsearch')
