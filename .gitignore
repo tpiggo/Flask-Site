@@ -1,0 +1,2 @@
+# not allowing git to store the useless PyCache
+__pycache__/
